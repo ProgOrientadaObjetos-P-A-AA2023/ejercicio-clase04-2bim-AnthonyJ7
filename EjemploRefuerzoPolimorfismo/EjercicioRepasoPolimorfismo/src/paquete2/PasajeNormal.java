@@ -5,6 +5,8 @@
  */
 package paquete2;
 
+import paquete3.*;
+
 /**
  *
  * @author reroes
@@ -13,6 +15,14 @@ public class PasajeNormal extends PasajeUrbano {
     
     public PasajeNormal(double pasaje){
         super(pasaje);
+    }
+    
+    // Sobre escritura del método abstracto de la superclase
+    @Override
+    public void establecerValorPasaje() {
+        
+        valorPasaje = valorFijo;
+        
     }
     
     

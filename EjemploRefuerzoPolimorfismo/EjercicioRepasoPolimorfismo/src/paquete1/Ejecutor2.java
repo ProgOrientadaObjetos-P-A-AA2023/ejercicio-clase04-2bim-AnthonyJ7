@@ -5,6 +5,7 @@
  */
 package paquete1;
 
+import paquete3.*;
 import java.util.ArrayList;
 import paquete2.*;
 
@@ -15,9 +16,10 @@ public class Ejecutor2 {
         ArrayList<PasajeUrbano> pasajes = new ArrayList<>();
         String[] nombres = {"Austin", "Monique", "Glen", "Richard", "Patrick"};
         String[] apellidos = {"Martinez", "Lyons", "Kim", "Tate", "Lee"};
+        String[] cedula = {"11111", "22222", "33333", "44444", "55555"};
         int[] edad = {9, 70, 35, 23, 10};
         double pasajeFijo = 0.4;
-        
+
         /*
         Generar un proceso que permita iterar los arreglos; el objetivo es 
         crear objetos de tipo Pasaje Menor de edad, Pasaje Normal, Pasaje 
@@ -35,18 +37,59 @@ public class Ejecutor2 {
         normal: mayor a 25 y menor 65
         tercera edad: mayor o igual a 65
         
-        */
+         */
         // inicio de solución
-        
-        
+        for (int i = 0; i < nombres.length; i++) {
+            
+            String nombre = nombres[i] + " " + apellidos[i];
+            int edadPersona = edad[i];
+            Persona persona = new Persona(nombre, cedula[i], edadPersona);
+
+            if (edadPersona >= 0 && edadPersona <= 18) {
+                
+                PasajeMenorEdad pasaje = new PasajeMenorEdad(pasajeFijo);
+                pasaje.establecerPersona(persona);
+                pasajes.add(pasaje);
+                
+            } else {
+
+                if (edadPersona > 18 && edadPersona <= 25) {
+                    
+                    PasajeUniversitario pasaje = new PasajeUniversitario(pasajeFijo);
+                    pasaje.establecerPersona(persona);
+                    pasajes.add(pasaje);
+
+                } else {
+                    if (edadPersona > 25 && edadPersona < 65) {
+                        
+                        PasajeNormal pasaje = new PasajeNormal(pasajeFijo);
+                        pasaje.establecerPersona(persona);
+                        pasajes.add(pasaje);
+                        
+                    } else {
+                        if (edadPersona >= 65) {
+                            
+                            PasajeTerceraEdad pasaje = new PasajeTerceraEdad(pasajeFijo);
+                            pasaje.establecerPersona(persona);
+                            pasajes.add(pasaje);
+
+                        }
+                    }
+                }
+            }
+        }
+
         // fin  de solución
-        
         // no incrementar líneas de código desde aquí
-        for (int i = 0; i < pasajes.size(); i++) {
+        for (int i = 0;
+                i < pasajes.size();
+                i++) {
             pasajes.get(i).establecerValorPasaje();
         }
-        
-        for (int i = 0; i < pasajes.size(); i++) {
+
+        for (int i = 0;
+                i < pasajes.size();
+                i++) {
             System.out.printf("%s\n",
                     pasajes.get(i));
         }

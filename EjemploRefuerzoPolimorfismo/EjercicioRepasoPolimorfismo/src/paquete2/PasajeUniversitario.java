@@ -4,6 +4,8 @@
  */
 package paquete2;
 
+import paquete3.PasajeUrbano;
+
 /**
  *
  * @author reroes
@@ -14,6 +16,12 @@ public class PasajeUniversitario extends PasajeUrbano {
         super(pasaje);
     }
     
+    @Override
+    public void establecerValorPasaje() {
+        
+        valorPasaje = (valorFijo * 0.30);
+        
+    }
        
     @Override
     public String toString(){
